@@ -1,14 +1,12 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "server.js", "use": "@vercel/node" }
-    ],
-    "routes": [
-      { "src": "/api/galaxies/(.*)", "dest": "/galaxies.js" },
-      { "src": "/(.*)", "dest": "/public/index.html" }
-    ],
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ]
+  "version": 2,
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" }
+  ],
+  "rewrites": [
+    { "source": "/api/galaxies/(.*)", "destination": "/api/galaxies.js" },
+    { "source": "/(.*)", "destination": "/public/index.html" }
+  ]
 }
+
   
