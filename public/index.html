@@ -10,29 +10,24 @@
   <h1>Welcome to the Galaxy Showcase</h1>
   <p>Discover the beauty of galaxies far beyond our reach.</p>
 
-  <!-- Container for displaying galaxies -->
   <div id="galaxy-container"></div>
 
-  <!-- JavaScript for fetching and displaying galaxies -->
   <script>
-    // Fetch galaxy data from the API
-    fetch('/galaxies')
+    // Fetch galaxies data from the /api/galaxies endpoint
+    fetch('/api/galaxies')
       .then(response => response.json())
       .then(galaxies => {
         const container = document.getElementById('galaxy-container');
 
         galaxies.forEach(galaxy => {
-          // Create elements for each galaxy
           const galaxyDiv = document.createElement('div');
           galaxyDiv.classList.add('galaxy');
 
-          // Galaxy image
           const img = document.createElement('img');
           img.src = galaxy.image;
           img.alt = galaxy.name;
           galaxyDiv.appendChild(img);
 
-          // Galaxy name and details
           const name = document.createElement('h2');
           name.textContent = galaxy.name;
           galaxyDiv.appendChild(name);
@@ -49,7 +44,6 @@
           description.textContent = galaxy.description;
           galaxyDiv.appendChild(description);
 
-          // Append galaxy details to container
           container.appendChild(galaxyDiv);
         });
       })
