@@ -3,8 +3,8 @@
   "builds": [
     { "src": "server.js", "use": "@vercel/node" }
   ],
-  "rewrites": [
-    { "source": "/api/galaxies/(.*)", "destination": "/api/galaxies.js" },
-    { "source": "/(.*)", "destination": "/public/index.html" }
+  "routes": [
+    { "src": "/api/galaxies", "dest": "/api/galaxies.js" },
+    { "src": "/(.*)", "dest": "/public/index.html" }
   ]
 }

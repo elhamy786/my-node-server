@@ -20,8 +20,10 @@ let galaxies = [
 
 ];
 
-// GET all galaxies
-router.get("/", (req, res) => res.json(galaxies));
+router.get('/', (req, res) => {
+    console.log("Fetching all galaxies");
+    res.json(galaxies);
+});
 
 // GET single galaxy by ID
 router.get("/:id", (req, res) => {
@@ -29,4 +31,5 @@ router.get("/:id", (req, res) => {
     galaxy ? res.json(galaxy) : res.status(404).json({ message: "Galaxy not found" });
 });
 
+// Export the router
 module.exports = router;
