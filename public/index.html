@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galaxy Showcase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to the Galaxy Showcase</h1>
+  <p>Discover the beauty of galaxies far beyond our reach.</p>
+
+  <div id="galaxy-container"></div>
+
+  <script>
+    fetch('/api/galaxies')
+      .then(response => response.json())
+      .then(galaxies => {
+        const container = document.getElementById('galaxy-container');
+
+        galaxies.forEach(galaxy => {
+          const galaxyDiv = document.createElement('div');
+          galaxyDiv.classList.add('galaxy');
+
+          const img = document.createElement('img');
+          img.src = galaxy.image;
+          img.alt = galaxy.name;
+          galaxyDiv.appendChild(img);
+
+          const name = document.createElement('h2');
+          name.textContent = galaxy.name;
+          galaxyDiv.appendChild(name);
+
+          const type = document.createElement('p');
+          type.textContent = `Type: ${galaxy.type}`;
+          galaxyDiv.appendChild(type);
+
+          const distance = document.createElement('p');
+          distance.textContent = `Distance: ${galaxy.distance}`;
+          galaxyDiv.appendChild(distance);
+
+          const description = document.createElement('p');
+          description.textContent = galaxy.description;
+          galaxyDiv.appendChild(description);
+
+          container.appendChild(galaxyDiv);
+        });
+      })
+      .catch(error => console.error('Error fetching galaxies:', error));
+  </script>
+</body>
+</html>
